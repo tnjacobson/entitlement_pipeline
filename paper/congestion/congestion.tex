@@ -1,0 +1,344 @@
+\documentclass[12pt]{article}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{inputenc, amsmath,amssymb, amsthm}
+\usepackage[font=small,labelfont=bf,
+   justification=justified,
+   format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\newtheorem{theorem}{Theorem}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[colorlinks=true,
+            linkcolor=blue,      % color of internal links (sections, pages, etc)
+            citecolor=blue,      % color of citation links
+            urlcolor=blue,       % color of URL links
+            filecolor=blue]{hyperref}
+\usepackage{url}
+\usepackage{array}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit}
+\usetikzlibrary{calc}
+\usepackage{titling}
+\usepackage{lipsum}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage[margin=.75in]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb, amsfonts}  % loads all AMS symbols & environments
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\usepackage[english]{babel}
+
+\onehalfspacing
+
+
+\graphicspath{{../../../../../Dropbox/Lawsuits Asymmetry/output}}
+
+
+\title{Entitlement Pipeline: Congestion}
+\author{Tyler Jacobson}
+\begin{document}
+
+\maketitle
+
+\section{Aspirational Abstract}
+Long government approval timelines are a ubiquitous aspect of the building process in the United States yet we do not have a quantitative sense for how costly delays are. A key determinant of the costs of delays are a project's risk of failure. Linking administrative data on planning approvals with completed building permits in Los Angeles, I show that delays are associated with a decline in project completion. To address the concern that projects with long timelines may be more complicated and fail for other reasons, I use data on the identity of city reviewers to build a measure of congestion. Projects experiencing delays due to congestion in their reviewer's queue are Y\% less likely to finish. 
+
+\section{Current State of Things}
+
+So we have the reduce form relationship that the amount of time waiting on approvals leads to a higher likelihood that a project does not finish construciton. The obvious downside of this result is that projects with longer review timelines may be more prone to failure for other reasons beyond the effect of the timeline itself. For that reason, we cannot interpret the relationship as informing us how the costs of proposing would change if we were to shorten review timelines. 
+
+To make progress on this front, we need an instrument that moves the amount of time that the project spends in review that is uncorrelated with other aspects that affect whether that project fails or not. 
+
+\section{Potential Instruments}
+Project $j$ is assigned to reviewer $r$. This assignment occurs based on the geography, type of project, and capacity. For that reason, this assignment is not random and a reviewer fixed effects design is not plausible. The potential instrument is the number of assignments to the reviewer after the proposal and the quality of the reviews. The idea is that lower quality projects are more time consuming for the reviewer to deal with. 
+
+Let $Z_{rt}$ be the number of projects that are assigned to revewer $r$ in the month of time $t$. 
+
+The regression is:
+$$R_{j} = X'_j\beta + \gamma Z_{rt(j)} + \epsilon_j$$
+
+Conditional on a set of project level controls, what is the effect of having more projects assigned to your reviewer after you propose. 
+
+
+\section{Predicting Case Lengths}
+Our desired instrument is the idiosyncratic workload assigned to the reviewer. In order to prevent reverse causality issues, we cannot just use the actual length of the cases after our reference case because those case lengths are affected by our reference case length. Instead, we need to form a prediction of the case length using characteristics of cases at application. These include:
+\begin{itemize}
+    \item case suffixes 
+    \item number of housing units if they exist
+    \item location of the project
+    \item Potentially the number of hold days: this reflects the quality of the application and may be independent of our reference case
+\end{itemize}
+
+{\footnotesize
+\input{../../../../../Dropbox/Lawsuits Asymmetry/output/congestion/predict_case_length.tex}
+}
+
+\section{Constructing Instrument}
+\subsection{Number of Applications}
+\begin{figure}[htbp!]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/hist_lead3_non_admin.pdf}
+    \caption{Number of Future Applications}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/binscatter_case_length_lead3_non_admin_rel_control_ym.pdf}
+    \caption{Effect of Future Applications on Case Length}
+  \end{subfigure}
+  \caption{Future Cases}
+\end{figure}
+
+Obviously, what is surprsing here is that even with the fixed effects for the reviewer and month, the amount of future applications is negatively correlated with the case length. One rationale for this is that the number of future cases are high when the reviewer is focusing on relatively light touch applications. This could lead to this negative correlation. 
+
+\subsection{Length of Future Applications}
+Instead, let us look at the future length of cases. If the reviewer is assigned many more complicated cases than they are used to, we might expect that their review time increases. If the office is assigning cases optimally, we would expect that this would not be such an issue as they should be splitting cases up. The real instrument would the number of applications going into the office. 
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/hist_lead3_mean_case_length.pdf}
+    \caption{Average Length of Reviewer's Future Cases}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/binscatter_case_length_lead3_mean_case_length_fes.pdf}
+    \caption{Effect of Future Case Length on Case Length}
+  \end{subfigure}
+  \caption{Future Case Length}
+\end{figure}
+
+The main concern with this instrument is reverse causality. A long review from the case in question will affect the cases in the future. Instead, we want to solely use the predicted case length of the future case. For instance, we want to construct predicted case length, we could use the type of entitlement requested, the location of the entitlement to reflect potential opposition. This surely would decrease the power in the regression.  
+
+\subsection{Predicted Workload}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/hist_yhat_m4.pdf}
+    \caption{Prediced Workload}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/binscatter_case_length_lead3_lead3_yhat_m4_fes.pdf}
+    \caption{Effect of Future Workload on Case Length}
+  \end{subfigure}
+  \caption{Future Predicted Workload}
+\end{figure}
+
+\section{Model to Rationalize Data}
+Let there be $R$ reviewers. Let $J_{rt}$ be the set of projects under $r$'s jurisdiction at time $t$. 
+
+The workload at time $t$ is:
+$$W_{rt}=\sum_{j\in J_{rt}} x_j$$
+
+$x_j$ is the exogenous review time of project $j$---if there was no other projects on the reviewer's plate, how long would that project take. 
+
+The actual time to review the project $j$ is going to be a function of both $x_j$ and the workload. If a reviewer just goes in order and reviews one at a time, then the total review time for project $j$ assigned at time $t$ to reviewer $r$:
+
+$$Y_{rtj} = W_{rt} + x_j$$
+
+A social planner trying to assign reviewers optimally will minimize:
+$$r(j) = argmin_r \{W_{rt}\}$$
+
+This creates a negative correlation between workload assigned today and workload assigned tomorrow. 
+
+What would more plausibly as an instrument? Well you would want to know the number of total projects that need to be assigned. If $J_t$ is the number of proposals at time $t$. A lot of proposals after your assignment occured, then your reviewer will be forced to be flooded even if the assignment is occuring optimally. The challenge with that instrument is that the number of applications would seem to be correlated with the ultimate building conditions. A lot of proposals will lead to potential competition for construction materials and labor. In addition, a lot of building conditions could be correlated with demand conditions. 
+
+Imagine there was an assignment rule that takes the workload of reviewer $r$ and something about the kinds of projects they tend to do $X_j$ and then assigns them a share of the projects. 
+$$\rho_{r} = F_r(W_{rt}, X_{j})$$
+The total number of projects assigned to them at time $t$ would be 
+$$\rho_{r}J_t$$
+This is sort of an exposure design. Say there are a lot of projects that are likely to be assigned to your reviewer then your reviewer will be flooded and you will have a longer review time. 
+
+The assumption required is:
+$$E[X_jJ_t]==0$$
+
+This just seems like an incredibly tough sell. Hypothetically if congestion is a thing, then it affects your review length. 
+
+Another way to think about congestion is that the total number of cases assigned in a month reflects demand conditions but where exactly you are in the order of your staff's queue matters. So whether I submit today or tomorrow is approximately random but I get put beheind someone in the queue that is a problem. 
+
+\section{When Does LA Hire Reviewers?}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{congestion/new_staff.pdf}
+   \caption{Number of New Planners Over Time}
+  \end{figure}
+\section{Basic Evidence on Congestion}
+
+To build up the machinery for understanding how congestion affects the length of the approval pipeline, we start with data at the city level. The basic question is: do more entitlements pending in the queue affect the length of the review process? With city-level data, the only variation in the queue is over time, so essentially I am asking are the time periods with long queues have projects that take an especially long time to get approval. 
+
+There are two main challenges with this approach before approaching the issue with solely relying on time series variation. The first issue is that time goes on there is less time for long projects to complete. For example, projects submitted a month before the final dataset is produced can take a maximum of a month to complete. The others will be unfinished at the time of completion. This problem is the standard justification for using hazard rate analysis. 
+
+The second problem with this analysis is that the types of projects over time are not equal. The city to its credit has created new pathways for getting the approval of new housing. Many of these are simpler or administrative in nature and therefore finish in less time. To deal with this issue, I simply include controls for the type of projects to try and hold equal the expected time to completion. The assumption is that the remaining variation in the hazard rate is due to the queue length. 
+\subsection{Measuring the Queue}
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/pred_long_filed_finished.pdf}
+    \caption{Starts and Finishes}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/pred_long_net.pdf}
+    \caption{Net Change in Queue}
+  \end{subfigure} \\
+    \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/pred_long_start.pdf}
+    \caption{Queue}
+  \end{subfigure}
+  \caption{Constructing the Queue}
+\end{figure}
+
+\subsection{Hazard Rate Model}
+
+Let $q_j$ denote the filing quarter of project $j$, and let $T_j$ denote the elapsed time between filing and case-completion. Projects that have not been approved by the end of the sample are treated as right-censored. The hazard rate for project $j$ at duration $t$ is
+\[
+    h_j(t)
+    =
+    \lim_{\Delta t \to 0}
+    \frac{\Pr(t \leq T_j < t+\Delta t \mid T_j \geq t)}{\Delta t}.
+\]
+This is the instantaneous probability that a project is approved at duration $t$, conditional on still being under review. 
+
+I estimate a Cox model with filing-quarter-specific baseline hazards:
+\[
+    h_j(t \mid X_j, g_j)
+    =
+    h_{0q_j}(t)\exp(X_j'\beta),
+\]
+
+where $h_{0g_i}(t)$ is an unrestricted baseline hazard specific to filing cohort $g_i$, and $X_i$ is a vector of fixed project characteristics measured at filing. These controls include project size, proposed units, parcel characteristics, neighborhood characteristics, project type, council district, and other predetermined features of the application.
+
+
+\subsection{City-Wide Evidence}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/comp_hazard_queue_with_queue.pdf}
+    \caption{Weighted Queue}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/reg_hr_log_queue.pdf}
+    \caption{Hazard Rate over Time}
+  \end{subfigure}
+  \caption{Baseline Evidence of Congestion}
+\end{figure}
+
+A key challenge with this approach is that we are solely relying on time series variation. If there are non-queue related factors that are correlated with queues and affect the length of reviews, we may get the effect on hazard rates wrong. In the next section, we take advantage on the fact that projects are reviewed in different processing units to try and get a better sense for the effect of congestion. 
+
+\subsection{Evidence from Processing Units}
+
+First, let's measure the queue for the three dominant processing units. What is interesting here is that the queue has more useful time series variation for "complicated" projects than for the projects that are predicted to be long. 
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/ts_queue_process_unit_complicated.pdf}
+    \caption{``Complicated'' Entitlements}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{congestion/ts_queue_process_unit_pred_long.pdf}
+    \caption{``Long'' Entitlements}
+  \end{subfigure}
+  \caption{Processing Unit Queues}
+\end{figure}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{congestion/ts_hazard_unit.pdf}
+   \caption{Hazard Rates by Processing Unit}
+  \end{figure}
+
+\section{Reviewers}
+Reviewers are the circulatory system with which congestion could occur. For the most part, I believe they are sorted into the processing unit
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{congestion/share_process_year_top.pdf}
+   \caption{Share of Annual Reviewer Projects in Same Processing Unit}
+  \end{figure}
+
+They also specialize in the complexity of cases. Within a processing unit and year, the assigned reviewer explains a sizable portion of the variance:
+
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{congestion/r2_staff.pdf}
+   \caption{Explanatory Power of Staff Fixed Effects}
+  \end{figure}
+
+
+So in addition, there is clear specialization within community plan area for those in the planning processing unit (those outside of the planning processing unit are more likely to span multiple community areas). 
+
+  \begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{congestion/share_process_year_top_community_plan_area.pdf}
+   \caption{Share of Annual Reviewer Projects in Same Community Plan Area}
+  \end{figure}
+
+I'm still struggling to get congestion to show up here. Perhaps, there is a way for me to look at raw data a little bit closer. Something like survival curves for projects proposed in high and low congestion areas. I can look at the raw data, which reviewers those projects were assigned to. See if something jumps out. 
+
+The goal is still to get an instrument for the length of time that a review takes. The thought experiment is that there are two essentially identical cases. Two sources of variation:
+\begin{enumerate}
+  \item for essentially random reasons, one gets submitted earlier than others and for that reason it is ahead in the queue and gets a head start on review. The way to operationalize this is to have a project ``bucket'' and see if the order of review explains the case length. Best to implement this in a hazard regression
+  \item For essentially random reasons, one case gets thrown in a reviewer who takes an especially long time compared to the other reviewers in the bucket. The challenge is predicting the reviewer type without selecting on the case type. Reviewers who appear to be faster may just review easier projects.  
+\end{enumerate}
+
+I want to understand how delays during the review process affect the likelihood of project completion. I have established the basic stylized fact the the lenght of project review timelines is correlated with completion. 
+
+The basic design is:
+$$Y_j = \beta_0 + \delta D_j + \epsilon_j$$
+where $Y_j$ is whether the project finishes, $D_j$ is the length of the review process. The problem is that the length of the review process is correlated with unobserved factors that shift whether a project will complete. 
+
+In the standard potential outcomes feedback, we want an instrument that shifts the length of the case without affecting whether the project completes in other ways. A reviewer design is likely to include both time effects and leniency effects. Since we cannot measure leniency very well, since many cases are completed, it's unlikely that this works. However, we can try and code up 
+
+Instead, let's call $b$ the assignment cell. There is essentially a 1:1 mapping from project's location and type to $b$  At time $t$, there are $N_{bt}$ submitted projects within cell $b$. The number of projects here is certainly correlated with demand factors $D_{bt}$ in that neighborhood. Let $n_{jbt}\in \{1,\cdots,N_{bt}\}$ be the order in which the projects are submitted.
+
+The identification assumption I am interested in exploring is that:
+\begin{enumerate}
+  \item First stage: being later ranked in the pipeline leads to longer reviews. A basic way to start with this is that the hazard with community plan areas is negative with queue length.
+  \item Exogeneity: the order in submission within month is independent of factors that affect project completion.   
+\end{enumerate}
+
+A month where there are not many applications means that ranking won't matter much. Being first 
+
+
+
+
+
+\section{Next Steps}
+There is clearly evidence of congestion both from the processing units and from the full time series. What I would do next:
+\begin{itemize}
+  \item Plot the regression coefficients from the unit regression using the same kind of scatter plot from the time series 
+  \item Figure out how to intepret the coefficient. 
+  \item Plot an example of how the two hazards look at the short window of the period and the long (survival curve) need to restrict roughly to the same kinds of projects
+  \item Think about how to instrument for the project length (is it going to be just pure time series variation? That is no good...)
+\end{itemize}
+
+\section{Literature on Congestion}
+Johnston et al talks about congestion in the interconnection queues for connecting power. Having a fee for joining the queue can lead to less entry and improve the congestion externality. 
+
+Beyond the Johnston paper, there are the classic congestion papers in transportation. Going back to the 1960s, there are papers that study a market where demand is a function of travel time and travel demand is a function of both demand and supply side factors. 
+\end{document}

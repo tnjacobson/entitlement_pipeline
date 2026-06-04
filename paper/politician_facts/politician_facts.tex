@@ -1,0 +1,163 @@
+
+\documentclass[12pt]{article}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{inputenc, amsmath,amssymb, amsthm}
+\usepackage[font=small,labelfont=bf,
+   justification=justified,
+   format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\newtheorem{theorem}{Theorem}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[colorlinks=true,
+            linkcolor=blue,      % color of internal links (sections, pages, etc)
+            citecolor=blue,      % color of citation links
+            urlcolor=blue,       % color of URL links
+            filecolor=blue]{hyperref}
+\usepackage{url}
+\usepackage{array}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit}
+\usetikzlibrary{calc}
+\usepackage{titling}
+\usepackage{lipsum}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage[margin=.75in]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb, amsfonts}  % loads all AMS symbols & environments
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\usepackage[english]{babel}
+
+\onehalfspacing
+
+
+\graphicspath{{../../../../../Dropbox/Lawsuits Asymmetry/output}}
+
+
+\title{Entitlement Pipeline: Politician Facts}
+\author{Tyler Jacobson}
+\begin{document}
+\maketitle
+
+Why are long approval timelines for the construction of housing and infrastructure costly? There a few reasons, first there are the literal carrying costs associated with long timelines. Developers must hold on to the rights to build land and therefore pay any taxes and maintenance costs associated with such. Relatedly, there is an option value story where a long timeline may reduce the appeal of an investment compared with something that is faster to be built. 
+
+The greater potential for long timelines to reduce the profitability of investment is what they do to risk and uncertainty. A long timeline creates uncertainty over the conditions of the economy and the political system at the time approval occurs. This means that the project may have been feasible at the time of proposal but no longer be feasible at the time of completion. At the same time, the developer may think that they are likely to get approval but the conditions of approval may change as the political environment moves. 
+
+In this project, we explore one such mechanism for how long timelines create uncertainty. In Los Angeles, like in NYC and Chicago, the local city councilmember has considerable influence over the entitlements process. Term limits and elections create the real potential for the council member to change between when the project is proposed and when the project is ready to be had a final decision. This creates uncertainty over the political preferences and outcomes of a project when it is proposed. 
+
+There are a few predictions if this story is important:
+\begin{enumerate}
+   \item A political switch increases the failure rate of projects especially if that switch is unexpected
+   \item Politicians try to push through approvals at the end of their terms.
+   \item Firms avoid proposing projects in the period of time where uncertainty is strongest. 
+\end{enumerate}
+
+\section{Basic Time Series}
+
+To begin the analysis, we pull together data on the approval and filing of entitlements in each district in Los Angeles. By eyeballing the time series plots for each district, we can assess whether the uncertainty over politicians is likely to be a dominant story. Council district 11 is the largest district. We present the filings and approvals there.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{politicians/cd11_count_filed.pdf}
+    \caption{Filings}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{politicians/cd11_count_approval_levels.pdf}
+    \caption{Approvals}
+  \end{subfigure}
+  \caption{Filings and Approvals in City Council District 11}
+\end{figure}
+
+Another district with a large number of filings of entitlements is District 13. 
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{politicians/cd13_count_filed.pdf}
+    \caption{Filings}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{politicians/cd13_count_approval_levels.pdf}
+    \caption{Approvals}
+  \end{subfigure}
+  \caption{Filings and Approvals in City Council District 13}
+\end{figure}
+
+Overall, we do not see strong patterns in the time series data. The number of entitlement proposals is rare, highly volatile outcome so getting signal out of the time series is difficult. If we restrict to what are especially contentious entitlements city-wide, there still is not a clear picture. 
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{politicians/city_complicated_filings_levels.pdf}
+    \caption{Filings}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+        \includegraphics[width=\textwidth]{politicians/city_complicated_approval_levels.pdf}
+    \caption{Approvals}
+  \end{subfigure}
+  \caption{Filings and Approvals Citywide}
+\end{figure}
+
+Even at the city level, the amount of time series variation is sparse for this to be a tough outcome to get signal out of. These reduce form methods are probably not going to yield a smoking gun for how this uncertainty changes over time. 
+
+\subsection{NYC}
+Outcomes of new housing being approved in NYC is even rarer so I'm not confident that pivoting to that setting would be helpful. 
+
+\subsection{Interpretation}
+It appears that the uncertainty of politicians changing due to elections is not large enough to generate a meaningful difference in application behavior. One reason for this could be that politicians do not have different enough preferences from one another. Ultimately, they are representing the same district so their beliefs may not be all that different from one another. Other uncertainties in the process may dominate. A precise 0 would only say that this is not an important channel but would not say that the entitlements process overall is not costly. 
+
+Another possible explanation is that we do not have enough power to measure any change in approval and filing rates. Entitlements are a rare outcome making this a difficult exercise. 
+
+Ultimately, this is a relatively niche mechanism that does not capture the full costs of the uncertainty in the entitilements process. The general idea of the mechanism I am interested in is that the fact that the timeline is long makes the ultimate approval conditions unpredictable. The developer when upfront costs are high, the developer would like to know what conditions will be like when it's time to propose.  
+
+What is the full story of the entitlements process? The entitlements process adds time, uncertainty, and potential costs to the building process. Developers therefore have an incentive to avoid the process. Some of the costs are process, some are approval, some are lawsuits. 
+
+
+What is the economic theory? 
+\begin{enumerate}
+   \item Should land use decisions be decentralized?
+   \item How much power does the entitlements process give local residents?
+\end{enumerate}
+
+
+
+\section{Testing for Higher Failure Rates}
+Most projects do not fail immediately when they are doomed but instead the rate of approval may fall. So the goal of this section is to test if the rate of approval rates fall when a politician changes. There are a few designs:
+\begin{itemize}
+   \item Comparing approval rates in districts that change politicians to districts that have the same politican. 
+\end{itemize}
+
+
+\section{Framework}
+A developer files an application for an entitlement at time $t=0$. The project is approved at time $T$. Since denials are rare and it's more common for a project to be terminated or withdrawn, we just model the rate of approvals and assume projects that are not approved to have $T=\infty$. 
+
+The basic Cox proportional hazards model is:
+$$h(t|x) = h_0(t)\exp(\beta_1x_1 + \dots \beta_p x_p)$$
+
+My hypothesis is that when a politican changes, projects are less likely to get approval. If projects that are not going to be approved were instantly removed from the building pipeline, we could simply observe the rate of denials. Because instead, that failed building manifests as developers not contacting the city planning department, we actually should observe the rate of approvals to fall when a new politician takes office. 
+
+I am a developer. I had a strong relationship with the politician in charge of the district. There is a strong likelihood that the new politician in charge does not have the ame relaitonship with me as the earlier politician. I therefore have a very strong incentive to get my project approved prior to the switch. For that reason, we expect that approvals should actually rise right before the political switch. Then, anything that does not get approval right before the switch in politicain should be way less likely to be getting approvals. There should be an increase in the rate of withdrawals. 
+
+
+
+
+
+\end{document}

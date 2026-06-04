@@ -1,0 +1,180 @@
+\documentclass[12pt]{article}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{inputenc, amsmath,amssymb, amsthm}
+\usepackage[font=small,labelfont=bf,
+   justification=justified,
+   format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\newtheorem{theorem}{Theorem}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[colorlinks=true,
+            linkcolor=blue,      % color of internal links (sections, pages, etc)
+            citecolor=blue,      % color of citation links
+            urlcolor=blue,       % color of URL links
+            filecolor=blue]{hyperref}
+\usepackage{url}
+\usepackage{array}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit}
+\usetikzlibrary{calc}
+\usepackage{titling}
+\usepackage{lipsum}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage[margin=.75in]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb, amsfonts}  % loads all AMS symbols & environments
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\usepackage[english]{babel}
+
+\onehalfspacing
+
+
+\graphicspath{{../../../../../Dropbox/Lawsuits Asymmetry/output}}
+
+
+\title{Entitlement Pipeline: Noise in Case Length}
+\author{Tyler Jacobson}
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+
+This document evaluates whether case length is a usable outcome variable for studying entitlement delays. The main concern is that case length is too noisy — driven by idiosyncratic factors unrelated to project type, CEQA category, or scale — to yield precise estimates. We compare four outcome specifications: levels and logs, with and without hold days removed. The central diagnostic is the within-$R^2$ from regressions that absorb year-month fixed effects: how much residual variation do observable case characteristics explain?
+
+The bottom line is that \textbf{log case length is the preferred outcome}. It has a within-$R^2$ of 0.39, is stable across sample splits, and produces consistent coefficient signs. Case length in levels has a within-$R^2$ of 0.04 and should not be used as the primary outcome. Removing hold days does not improve fit and makes things worse.
+
+%-------------------------------------------------------------------------------
+\section{Distribution of Outcomes}
+%-------------------------------------------------------------------------------
+
+Figure \ref{fig:hists} shows the distribution of all four outcomes. Case length in levels is highly right-skewed with a long upper tail — a small number of cases take several thousand days. The log transformation compresses this substantially and produces a distribution that is close to symmetric. Removing hold days does not materially change the shape of either distribution but introduces negative values for cases where holds exceeded raw length (which get dropped).
+
+\begin{figure}[H]
+\centering
+\caption{Distribution of Outcome Variables}
+\label{fig:hists}
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{case_length_noise/hist_case_length}
+    \caption{Case Length (Days)}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{case_length_noise/hist_log_case_length}
+    \caption{Log Case Length}
+\end{subfigure}
+\vspace{1em}
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{case_length_noise/hist_case_length_no_hold}
+    \caption{Case Length Minus Holds}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{case_length_noise/hist_log_case_length_no_hold}
+    \caption{Log Case Length Minus Holds}
+\end{subfigure}
+\end{figure}
+
+%-------------------------------------------------------------------------------
+\section{Relationship with Observable Characteristics}
+%-------------------------------------------------------------------------------
+
+Figure \ref{fig:binscatters} shows binscatter plots of each outcome against log proposed units, conditional on having at least one unit. These give a visual sense of how much signal observable project scale provides. The log outcomes show a cleaner, more monotone relationship with project size than the level outcomes, consistent with multiplicative rather than additive variation in case length.
+
+\begin{figure}[H]
+\centering
+\caption{Binscatter: Outcome vs.\ Log Proposed Units}
+\label{fig:binscatters}
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{case_length_noise/binscatter_case_length_log_units}
+    \caption{Case Length (Days)}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{case_length_noise/binscatter_log_case_length_log_units}
+    \caption{Log Case Length}
+\end{subfigure}
+\vspace{1em}
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{case_length_noise/binscatter_case_length_no_hold_log_units}
+    \caption{Case Length Minus Holds}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{case_length_noise/binscatter_log_case_length_no_hold_log_units}
+    \caption{Log Case Length Minus Holds}
+\end{subfigure}
+\end{figure}
+
+%-------------------------------------------------------------------------------
+\section{Regression Results and Variance Decomposition}
+%-------------------------------------------------------------------------------
+
+Table \ref{tab:main} reports regressions of each outcome on case characteristics, absorbing year-month fixed effects. The key statistic is the within-$R^2$: the share of residual variance (after removing year-month means) explained by the controls.
+
+\begin{table}[H]
+\centering
+\caption{Predicting Case Length: Four Outcome Specifications}
+\label{tab:main}
+\input{"../../../../../Dropbox/Lawsuits Asymmetry/output/case_length_noise/main_regs.tex"}
+\begin{tablenotes}[flushleft]\small
+\item \textit{Notes:} All specifications absorb year-month fixed effects. Standard errors clustered by substation. The within-$R^2$ measures the fraction of residual variance explained by the controls after removing year-month means.
+\end{tablenotes}
+\end{table}
+
+The within-$R^2$ tells a clear story. For case length in levels, controls explain only 4.4\% of within-year-month variation — the outcome is dominated by noise. For log case length, the within-$R^2$ rises to 0.39, indicating that case type, CEQA category, and project scale together explain a substantial share of variation. Removing hold days worsens fit in both cases (within-$R^2$ of 0.008 and 0.32 respectively), likely because hold day measurement is itself noisy.
+
+The coefficient patterns also favor the log specification. In levels, the CEQA coefficient is 138 days for any CEQA review but \textit{negative} for EIR-specific cases net of the CEQA indicator, which is difficult to interpret. The log specification yields consistent positive effects for more demanding review types (EIR $>$ Neg. Dec. $>$ Categorical Exemption), which is what we would expect.
+
+%-------------------------------------------------------------------------------
+\section{Residual Distribution}
+%-------------------------------------------------------------------------------
+
+Figure \ref{fig:resid} shows the distribution of residuals from the log case length regression after absorbing year-month fixed effects and all controls. The residuals are approximately symmetric with a standard deviation of roughly one log point, meaning a one-standard-deviation unexplained shock corresponds to a factor of $e \approx 2.7$ in case length. This is large, but the distribution is well-behaved with no obvious multi-modality or extreme outliers driving the variance.
+
+\begin{figure}[H]
+\centering
+\caption{Residual Distribution: Log Case Length}
+\label{fig:resid}
+\includegraphics[width=0.55\textwidth]{case_length_noise/hist_resid_log}
+\end{figure}
+
+%-------------------------------------------------------------------------------
+\section{Stability Over Time}
+%-------------------------------------------------------------------------------
+
+Table \ref{tab:split} splits the sample at the median filing year and re-estimates the log case length regression on each half. If the outcome is too noisy to capture real relationships, we would expect coefficients to be unstable or flip signs across subsamples.
+
+\begin{table}[H]
+\centering
+\caption{Split-Sample Stability: Log Case Length}
+\label{tab:split}
+\input{"../../../../../Dropbox/Lawsuits Asymmetry/output/case_length_noise/split_sample.tex"}
+\begin{tablenotes}[flushleft]\small
+\item \textit{Notes:} ``Early'' and ``Late'' split the sample at the median filing year. Both absorb year-month fixed effects.
+\end{tablenotes}
+\end{table}
+
+The core coefficients are stable. Cases with appeals, EIR reviews, and multiple entitlement types take longer in both halves. Administrative cases are shorter in both. The main instability is in the TOC/Density Bonus coefficient (0.046 early vs.\ 0.446 late), which is expected: the TOC program launched in 2017, so the early sample has almost no TOC cases and the coefficient is poorly identified there. The within-$R^2$ is 0.47 early and 0.37 late, both well above the threshold for a usable outcome.
+
+%-------------------------------------------------------------------------------
+\section{Bottom Line}
+%-------------------------------------------------------------------------------
+
+\begin{enumerate}
+    \item \textbf{Use log case length.} The within-$R^2$ of 0.39 is sufficient for detecting economically meaningful effects. The level outcome has a within-$R^2$ of 0.04 and will yield very imprecise estimates.
+    \item \textbf{Do not subtract hold days.} Hold day removal reduces fit in both the level and log specifications and introduces additional measurement error.
+    \item \textbf{The log outcome is stable.} The coefficient pattern is consistent across early and late subsamples, with instability concentrated in newer programs (TOC) where identification is limited in the early period.
+    \item \textbf{Residual variance is large but well-behaved.} Unexplained variation corresponds to roughly a factor of 2--3 in case length. This means the instrument will need a strong first stage to achieve precise 2SLS estimates.
+\end{enumerate}
+
+\end{document}

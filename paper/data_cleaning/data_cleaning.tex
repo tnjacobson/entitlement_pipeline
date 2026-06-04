@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{inputenc, amsmath,amssymb, amsthm}
+\usepackage[font=small,labelfont=bf,
+   justification=justified,
+   format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\newtheorem{theorem}{Theorem}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[colorlinks=true,
+            linkcolor=blue,      % color of internal links (sections, pages, etc)
+            citecolor=blue,      % color of citation links
+            urlcolor=blue,       % color of URL links
+            filecolor=blue]{hyperref}
+\usepackage{url}
+\usepackage{array}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit}
+\usetikzlibrary{calc}
+\usepackage{titling}
+\usepackage{lipsum}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage[margin=.75in]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb, amsfonts}  % loads all AMS symbols & environments
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\usepackage[english]{babel}
+
+\onehalfspacing
+
+
+\graphicspath{{../../../../../Dropbox/Lawsuits Asymmetry/output}}
+
+
+\title{Entitlement Pipeline: Data Cleaning}
+\author{Tyler Jacobson}
+\begin{document}
+\maketitle
+
+\section{Goal and Plan}
+The goal of this project at this point is to map the full housing construction pipeline. How many units are proposed under the entitlements system, how many get approved and how many get built. The crucial elements of this are:
+\begin{enumerate}
+    \item Having a project level file. There are multiple entitlements for the same project. We need to be confident that we have a single row for each project. How should we handle an entitlement that was proposed, not built and then they try again. If it was at least five years later or is a different kind of project. 
+\end{enumerate}
+
+Key Variables We Need:
+\begin{itemize}
+    \item Date of proposal, completion 
+    \item Location 
+    \item What they were asking for: units, free text field, type of entitlement
+    \item Level of opposition: appeals, environmental review
+\end{itemize}
+
+\section{A Project Level Entitlements File}
+We want there to be a single row for every proposed entitlement project in the data. Some questions:
+\begin{enumerate}
+    \item How can we link across cases? There are APNs and addresses on each project that allow us to link across cases. If we make some mistakes, it seems okay as long as we don't lead to missing merges because of the different APNs. 
+    \item What if there are multiple APNs for the same project? This is the same issue as above. 
+    \item What if there are multiple distinct projects per APN? Like someone tries something now and they also had tried five years ago. I would call that a failure and then a success, so I would want to have like five year buckets.
+    \item How can we validate this data? 
+\end{enumerate}
+
+\subsection{Tasks}
+\begin{enumerate}
+    \item Clean Post 2015 File 
+    \item Clean Pre 2015 File and assess how data quality is different across the two
+    \item Handle duplicates
+    \item Classify type of entitlements
+    \item Summary statistics
+\end{enumerate}
+
+
+\subsection{Data Sources}
+LA entitlements provides a handful of files. In the pre and post 2015 data, each row is a case. This means that there are environmental, and appeals cases that are tied to a main entitlement case all combined. The first step in cleaning the data is to separate out appeals and environmental cases to be wide on the main case. This lets us observe the full length of time for this cases but 
+
+\subsection{Going from Cases to Applications}
+Okay so at this point our data is wide where each row is a case and we observe the environmental review case and the appeals case wide. We know that there are many such cases within a single application. How should we aggregate information?
+\begin{itemize}
+    \item We would want to know if any of the cases are denied
+    \item We would want to know the full length associated with the application
+    \item We would want the total hold days across the different cases 
+    \item We would want to be sure there was no geographic differences across the cases. We would want to know what all the entitlements asked for are. 
+\end{itemize}
+
+\begin{figure}[htbp!]
+   \centering
+   \includegraphics[width=0.6\textwidth]{entitlements_sum_stats/single_case_application_ts.pdf}
+   \caption{Fraction of Applications with Single Case}
+  \end{figure}
+
+  \subsection{Units Proposed vs Built}
+  Here is an example of a case that has 0 approved units in the data but appears to be approved in my data. 
+  \begin{quote}
+    DIR-2013-3248-CLQ-ACI
+  \end{quote}
+  In ZIMAS, this building was built in 2018 with 135 units so it appears indeed that it was completed. This implies that the case denied or withdrawn is probably more reliable.
+
+\subsection{Classifying the Type of Entitlement}
+Different entitlements have different levels of heavy lift. 
+
+\section{A Clean Building Permits Database}
+
+
+\section{Linking Entitlements to Building Permits}
+
+\end{document}

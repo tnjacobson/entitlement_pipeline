@@ -1,0 +1,141 @@
+
+\documentclass[12pt]{article}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{inputenc, amsmath,amssymb, amsthm}
+\usepackage[font=small,labelfont=bf,
+   justification=justified,
+   format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\newtheorem{theorem}{Theorem}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[colorlinks=true,
+            linkcolor=blue,      % color of internal links (sections, pages, etc)
+            citecolor=blue,      % color of citation links
+            urlcolor=blue,       % color of URL links
+            filecolor=blue]{hyperref}
+\usepackage{url}
+\usepackage{array}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit}
+\usetikzlibrary{calc}
+\usepackage{titling}
+\usepackage{lipsum}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage[margin=.75in]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb, amsfonts}  % loads all AMS symbols & environments
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\usepackage[english]{babel}
+
+\onehalfspacing
+
+
+\graphicspath{{../../../../../Dropbox/Lawsuits Asymmetry/output}}
+
+
+\title{Entitlement Pipeline: Building the Pipeline}
+\author{Tyler Jacobson}
+\begin{document}
+\maketitle
+\section{Overview}
+\begin{enumerate}
+    \item The goal is to produce a figure that is the amount of housing units proposed, approved, and built
+    \item First thing to do: create a list of entitlements that are intended to build new construction
+\end{enumerate}
+
+Currently, in the code file, 
+\begin{verbatim}
+    merge_entitlements_permits.do
+\end{verbatim}
+We do the following to define the sample:
+\begin{enumerate}
+    \item Drop any entitlements that do not have an APN 
+    \item Drop any entitlements that have 0 units (non-residential projects)
+    \item Within APN, keep the entitlement with the highest number of units
+\end{enumerate}
+This leads to us starting with 200000 units prior to sample selection and ending with 174000.
+
+Then to actually do the merge, we do the following:
+\begin{enumerate}
+    \item Use APN to link directly to permits, the permit issue date must be after the entitlement approval date
+    \item For any unmerged after step 1, see if any new APNS are associated with the merge using the APN update file. Then merge to permits using the new APNs
+    \item For any unmerged after step 2, match on address (exact)
+    \item For any unmerged after step 3, match on bookpage and assign as built if the number of units in the permit is within 25-400\% of the entitlement number of units 
+\end{enumerate}
+
+\section{Defining the Sample}
+Developers use entitlement applications to apply for a variety of types of projects--not all of which will be site-specific new construction that will show up in building permits. 
+
+First, we need a set of entitlements that are likely to be new construction projects. 
+
+Second, we need to be sure there is good quality geographic information for each project allowing us to link entitlements to building permits. 
+
+Then we can compare the sample of entitlements we have selected to the sample of all entitlements. 
+
+
+\section{Linking Entitlements to Permits}
+The information we have for project linkage are the APN and an address in the entitlements. Concerns with the linkage are that APNs can change. Fortunately we have the APN change database from the county that should help with this. I need to write up the algorithm for doing this. 
+
+\subsection{Spot Checking}
+Let's run through ten examples of projects that have not received permits and ensure that our linkage is working properly. 
+
+\begin{itemize}
+    \item APN: 5126030011, 9/2016, 1444 units, ZIMAS: parking lot
+    \item APN: 2146005015, 7/2019, 1432 units, ZIMAS: shopping center
+    \item APN: 5094022008, 7/2019, 29 units, ZIMAS: 2 units residential
+    \item APN: 5502021001, 2/2015, 53 units, ZIMAS: parking garage, confirmed via google maps
+    \item APN 5077008010, 10/2017, 77 units, ZIMAS; 1960 Office Building, confirmed by google maps May 2024 
+    \item APN 5502025900, 8/2017, 103 units, ZIMAS: Commerical one story, parking lot in google maps 8/2025
+    \item APN 5469012020, 10/23/2018, 2 units, ZIMAS: 1919 3 unit building, this does appear to have converted to be a larger building in the back of the property. This APN was in the building permits so not sure why it didn't count. Fixed because it was keeping a permit with missing unit counts. Issue date was 07/20/2020. 
+\end{itemize}
+
+\section{Results}
+The first figure to make is a simple time series of how likely an entitlement gets a building permit as a function of hwne it is approved. We can see pretty clearly in the data that as you would expect that this falls with time as there is less time to get a building permit. The slope of the decline in match rate appears to increase when interest rates rise in 2022.
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/ts_matched_ym.pdf}
+   \caption{Share of Entitlements with a Building Permit Over Time}
+  \end{figure}
+
+  As we documented before, there is a strong relationship between the lenght of the entitlements process and the likelihood that it gets a building permit. 
+  \begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/binscatter_match_length.pdf}
+   \caption{Share with Building Permit By Length}
+  \end{figure}
+
+  A new relationship is below where a strong predictor is the land value. You might think that higher land value projects are more difficult or higher return to getting right. A low land value parcel has a relatively simple story for completion. You just follow the cookie cutter building permit. 
+  \begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/binscatter_match_land.pdf}
+   \caption{Share with Building Permit By Land Value}
+  \end{figure}
+Finally, we look at this relationship in table form and it is definitely clear that length of cases is the strongest predictor of project completion. Why might this be? Well the most complicated cases require the most complicated reviews and are already likely to be high failure projects. The obvious next step would be to measure congestion and try and instrument for review time. 
+\begin{table}[H]
+    \centering
+    \input{../../../../../Dropbox/Lawsuits Asymmetry/output/sum_stats/tab_matched_regressions.tex}
+\caption{Share of Entitlements with Permit}
+\end{table}
+
+
+
+\section{Benchmark using Tract Data}
+We can assign each entitlement case to the tract using its APN and then compare with the number of permits in that tract using the building permits (doing so by year). This gives us a rough sense for where the gap in proposed to approved to built pipeline is. This is not reliant on the linkage working exactly so is good robustness. 
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/tract_prop_app_permitted.pdf}
+   \caption{Units Proposed/Approved/Built by Tract Renter Share}
+  \end{figure}
+
+
+\end{document}

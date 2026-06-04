@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Entitlement Intuition}{3}{0}{1}
+\beamer@sectionintoc {2}{Entitlement Pipeline: Facts}{6}{0}{2}
+\beamer@sectionintoc {3}{Mechanism: Political Risk}{17}{0}{3}
+\beamer@sectionintoc {4}{NYC Learning by Doing}{27}{0}{4}

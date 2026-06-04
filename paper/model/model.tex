@@ -1,0 +1,426 @@
+\documentclass[12pt]{article}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{inputenc, amsmath,amssymb, amsthm}
+\usepackage[font=small,labelfont=bf,
+   justification=justified,
+   format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\newtheorem{theorem}{Theorem}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[colorlinks=true,
+            linkcolor=blue,      % color of internal links (sections, pages, etc)
+            citecolor=blue,      % color of citation links
+            urlcolor=blue,       % color of URL links
+            filecolor=blue]{hyperref}
+\usepackage{url}
+\usepackage{array}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit}
+\usetikzlibrary{calc}
+\usepackage{titling}
+\usepackage{lipsum}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage[margin=.75in]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb, amsfonts}  % loads all AMS symbols & environments
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\usepackage[english]{babel}
+
+\onehalfspacing
+
+
+\graphicspath{{../../../../../Dropbox/Lawsuits Asymmetry/output}}
+
+
+\title{Entitlement Pipeline: Model}
+\author{Tyler Jacobson}
+\begin{document}
+\maketitle
+
+\section{Overview and Intuition}
+Many local and state governments are interested in permitting reform and streamlining in order to lower the cost of building housing and infrastructure. But how costly exactly are long approval timelines and why? Certainly, time is money, but just how much money? We generally think of the cost of time to the firm as being their discount factor. This could be thought of as their cost of capital, so at what interest rate are they able to get an investor to sign on to the project. 
+
+The cost of time to a firm depends on the risk involved. The longer the approval timeline the greater risk the project takes on. Getting an entitlement approved requires a handful of steps. First, the developer must develop a plan for the project and explore whether the political environment is amenable to approving their plan. Then, the developer may submit a formal proposal. This involves developing fairly detailed plans for building and finding sources of financing. They may want to be confident in the costs of building. In Los Angeles, submitting the formal application leads to city planning review and environmental review, which occurs simultaneously. The larger and more controversial the project, the longer these steps take. During the process, there is public input. This could impact the final decisionmaker. 
+
+Generally in Los Angeles, the final decisionmaker for an entitlement will be a member of the city planning department. However, according to California law, any project that requires CEQA review may be appealable to the city council. This means that the city council has considerable influence over the approval process. The ultimate result of the process is an approval decision and conditions on said approval. 
+
+\subsection{What is Unknown?}
+Entitlement applications involve two aspects that make development difficult. First, the developer must have the support of the local politician and get approval. Second, they must navigate the costly entitlements process and encounter lawsuits, environmental review, and hurdles thrown their way. We do not have the relative importance of those two channels. How much of the cost of entitlements is due to what can be approved vs what the process costs?
+
+\section{Toy Model}
+Imagine a project has private return $\pi(x)$ that depends on the size of the proposal. Profits are increasing in size up to a bliss point based on construction costs and demand-side factors. The developer must get approval from the politician and also must navigate the entitlements process. Approval is dependent on size and potentially uncertain. The approval process takes time $T$. With no uncertainty over profits,
+
+$$\beta^TA(x)\pi(x)-F$$
+
+This yields an intensive margin solving the FOC:
+$$A'(x^*)\pi(x) + A(x)\pi'(x^*)=0$$
+
+The risk of approval leads the developer to choose on the intensive margin a smaller ideal $x$ than they otherwise would. 
+
+The developer then evaluates whether,
+$$\beta^TA(x^*)\pi(x^*)-F\geq 0$$
+
+Long process both increases the hurdle rate (higher risk in $\beta$) and elongates the length of the review timeline. The effect on approvals from timeline uncertainty is therefore concentrated on the hurdle level of profitability:
+
+$$A(x^*)\pi(x^*)\geq \frac{F}{\beta^T}$$
+
+In this model, there are two forces blocking development. The approval function $A(x)$ and the entitlement procedural costs $\frac{F}{\beta^T}$. We observe $T$.
+
+\subsection{Profit Shocks}
+Here there is no reason for a project to ever not be built. Now, let's add a profit shock to the building pipeline. Final profits are:
+$$\pi(x) + \epsilon$$
+where the final profits are only observed at the end of the entitlements process. When getting approval, the developer has an option to build:
+$$V(\pi(x)) = \max\{\pi(x) + \epsilon, 0\}$$
+The probability of building is:
+$$\Pr(\text{Build} = 1) = \Pr(\epsilon>-\pi) = 1 - G(-\pi)$$
+Assuming that $\epsilon$ follows a distribution $G$. Note that $V(\pi)$ is increasing in the spread of $\epsilon$: greater uncertainty about final profits raises option value. $V(\pi)$ is actually increasing in the size of the uncertainty. The new extensive margin is given by:
+$$A(x^*)V(\pi(x^*))\geq \frac{F}{\beta^T}$$
+
+
+\section{Opposition Model}
+\section{A Simple Model of Entitlement Costs}
+
+A developer has a project $j$ with potential profit $\pi_j$. Before construction can begin, the developer must receive approval. The entitlement process takes time $T_j \geq 0$, during which construction cannot begin. The developer discounts payoffs at rate $\beta \in (0,1)$, reflecting the cost of capital, so the effective present value of an approved project is $\beta^{T_j}\pi_j$. Longer review timelines erode project value independently of whether approval is ultimately granted. Approval requires overcoming a project- and location-specific entitlement barrier $O_j$. The developer can exert costly effort $e_j$ to increase the probability of approval. Effort can be interpreted broadly as hiring lawyers and consultants, revising plans, commissioning studies, negotiating with public officials, attending hearings, or waiting through administrative review.
+
+In the simplest deterministic version, approval is given by
+
+\[
+A_j = \mathbf{1}\{e_j \geq O_j\}.
+\]
+
+The developer solves
+
+\[
+\max_{e_j} \ A_j(e_j)\,\beta^{T_j}\pi_j - e_j.
+\]
+
+Because approval is a discontinuous threshold rule, the usual first-order condition is not well-defined. Instead, the developer either exerts no effort or exerts exactly enough effort to clear the entitlement barrier. Thus,
+
+\[
+e_j^* =
+\begin{cases}
+O_j & \text{if } \beta^{T_j}\pi_j \geq O_j, \\
+0 & \text{if } \beta^{T_j}\pi_j < O_j.
+\end{cases}
+\]
+
+The approval decision can therefore be written as
+
+\[
+A_j = \mathbf{1}\{\beta^{T_j}\pi_j \geq O_j\}.
+\]
+
+This expression highlights the key economic idea: a project is approved when its discounted private surplus $\beta^{T_j}\pi_j$ is large enough to justify the cost of overcoming the entitlement barrier. Both high barriers $O_j$ and long timelines $T_j$ can kill a project on this margin. The object of interest is $O_j$, the implicit cost of approval, which the researcher must recover from observables.
+
+\subsection{Latent Entitlement Barriers}
+
+The entitlement barrier is not directly observed. Instead, we observe characteristics of the project, the neighborhood, and the approval process. Let
+
+\[
+O_j = Z_j'\delta + \xi_j,
+\]
+
+where $Z_j$ includes observable determinants of approval difficulty, such as neighborhood income, homeowner share, historic preservation status, council district, zoning complexity, environmental review requirements, and prior nearby opposition. The term $\xi_j$ captures unobserved resistance or regulatory friction.
+
+Observed opposition activity, such as appeals and lawsuits, is a noisy signal of the underlying entitlement barrier. Let
+
+\[
+L_j = \rho O_j + W_j'\theta + \nu_j,
+\]
+
+where $L_j$ measures observed opposition, $W_j$ contains other determinants of opposition activity, and $\nu_j$ is measurement error. This distinction is important because appeals and lawsuits are not necessarily exogenous: they may respond to project size, expected profitability, and the stakes of development. Conditional on $W_j$, however, $L_j$ provides a noisy proxy for $O_j$ that can be used as a control or, under stronger assumptions, as an instrument for the latent barrier.
+
+\subsection{A Smooth Approval Probability}
+
+For estimation, it is useful to replace the deterministic approval rule with a smooth probability of approval. Suppose
+
+\[
+\Pr(A_j = 1 \mid e_j, O_j) = p(e_j - O_j),
+\]
+
+where $p'(\cdot)>0$ and $p''(\cdot)\leq 0$. The developer solves
+
+\[
+\max_{e_j} \ p(e_j - O_j)\,\beta^{T_j}\pi_j - c(e_j),
+\]
+
+where effort costs satisfy $c'(e_j)>0$ and $c''(e_j)>0$.
+
+The first-order condition is
+
+\[
+\beta^{T_j}\pi_j\, p'(e_j - O_j) = c'(e_j).
+\]
+
+By the implicit function theorem,
+
+\[
+\frac{\partial e_j^*}{\partial \pi_j}
+=
+\frac{\beta^{T_j}\,p'(e_j^* - O_j)}{c''(e_j^*) - \beta^{T_j}\pi_j\,p''(e_j^* - O_j)} > 0,
+\]
+
+where the denominator is positive because $c''>0$ and $p''\leq 0$. More profitable projects therefore induce greater approval effort. An analogous argument gives $\partial e_j^*/\partial T_j < 0$: longer timelines reduce the present value of the project and therefore the marginal return to overcoming the barrier.
+
+Thus, raw approval rates understate the costliness of the entitlement process. High-profit projects may be approved even in high-barrier locations because developers are willing to exert more effort to overcome opposition.
+
+\subsection{Reduced-Form Approval Equation}
+
+If effort is unobserved, the model can be written as a latent approval index:
+
+\[
+A_j = \mathbf{1}\{\alpha\,\beta^{T_j}\pi_j - O_j + u_j \geq 0\}.
+\]
+
+The composite error $u_j = -\xi_j + \eta_j$ combines the unobserved component of the entitlement barrier $\xi_j$ with optimization error $\eta_j$. Substituting in the latent entitlement barrier $O_j = Z_j'\delta + \xi_j$ and absorbing $\xi_j$ into $u_j$ gives
+
+\[
+A_j = \mathbf{1}\{\alpha\,\beta^{T_j}\pi_j - Z_j'\delta + u_j \geq 0\}.
+\]
+
+Linearizing $\beta^{T_j} \approx 1 - rT_j$ (where $r = -\log\beta$ is the continuously compounded discount rate) yields
+
+\[
+A_j \approx \mathbf{1}\bigl\{\alpha\pi_j - \alpha r\,T_j\pi_j - Z_j'\delta + u_j \geq 0\bigr\}.
+\]
+
+The term $T_j\pi_j$ is an interaction: timeline delays are more costly for more profitable projects. Approval probabilities can be estimated using
+
+\[
+\Pr(A_j = 1)
+=
+\Lambda\!\left(\alpha \pi_j - \phi\,T_j\pi_j - Z_j'\delta \right),
+\]
+
+where $\Lambda(\cdot)$ is a logistic or normal CDF and $\phi = \alpha r > 0$. The term $Z_j'\delta$ captures the local entitlement barrier. Places with high values of $Z_j'\delta$ are places where approval is difficult after controlling for project profitability and review timelines.
+
+The estimated entitlement cost for project $j$ is therefore
+
+\[
+\widehat{O}_j = Z_j'\widehat{\delta}.
+\]
+
+This can be aggregated to a neighborhood or council district $g$:
+
+\[
+\widehat{O}_g
+=
+\frac{1}{N_g}
+\sum_{j \in g}
+Z_j'\widehat{\delta}.
+\]
+
+\subsection{Predictions}
+
+The model generates several testable predictions.
+
+First, higher-profit projects should be more likely to receive approval, holding local approval barriers fixed:
+
+\[
+\frac{\partial \Pr(A_j=1)}{\partial \pi_j} > 0.
+\]
+
+Second, higher entitlement barriers should reduce the probability of approval:
+
+\[
+\frac{\partial \Pr(A_j=1)}{\partial O_j} < 0.
+\]
+
+Third, the effect of entitlement barriers should be weaker for highly profitable projects, because those developers are willing to exert more effort. In the structural effort model, one can show that
+
+\[
+\frac{\partial^2 \Pr(A_j=1)}
+{\partial \pi_j \partial O_j}
+> 0.
+\]
+
+This prediction follows from the effort model, not from the reduced-form logistic alone: in the index $\Lambda(\alpha\pi_j - Z_j'\delta)$, the cross-partial $-\alpha\Lambda''(\cdot)$ changes sign depending on the approval probability. Testing this prediction empirically therefore requires including an interaction term between project profitability and the barrier, i.e., $\pi_j \times Z_j'\delta$, and testing whether its coefficient is positive.
+
+Fourth, high entitlement-cost places may exhibit avoidance behavior. Developers may choose smaller, simpler, or more by-right projects in locations where entitlement barriers are high. If $q_j$ denotes project scale, then
+
+\[
+\frac{\partial q_j^*}{\partial O_j} < 0.
+\]
+
+Thus, entitlement costs may appear not only in approval outcomes, but also in the scale and type of projects that developers choose to propose.
+
+\subsection{Proposal-Stage Extension}
+
+The most important extension is to include the proposal decision. Let $P_j$ be an indicator for whether a developer proposes a project. At the proposal stage, the developer anticipates a timeline $T_j$ and an entitlement barrier $O_j$, both of which may be uncertain. A developer proposes if expected discounted profits net of entitlement costs exceed the fixed cost of preparing an application:
+
+\[
+P_j =
+\mathbf{1}
+\{
+E\!\left[\beta^{T_j}\right]\pi_j - E[C(O_j)] - F_j \geq 0
+\},
+\]
+
+where $F_j$ is the fixed cost of preparing the proposal and
+
+\[
+E[C(O_j)] = E\!\left[e_j^*(O_j)\right] + \bigl(1 - E[\beta^{T_j}]\bigr)\pi_j
+\]
+
+is the expected total entitlement cost, combining direct effort expenditures with the expected opportunity cost of waiting before construction can begin. Higher expected barriers $E[O_j]$ and longer expected timelines $E[T_j]$ both raise $E[C(O_j)]$ and deter proposal.
+
+Conditional on proposal, approval is given by
+
+\[
+A_j =
+\mathbf{1}
+\{
+\alpha\,\beta^{T_j}\pi_j - O_j + u_j \geq 0
+\}.
+\]
+
+This distinction matters because the most costly locations may not have many observed denials. Developers may simply avoid proposing projects there. Entitlement costs can therefore operate through three margins:
+
+\[
+\text{proposal}
+\quad \rightarrow \quad
+\text{approval}
+\quad \rightarrow \quad
+\text{completion}.
+\]
+
+A costly entitlement process may reduce the number of proposed projects, reduce approval rates conditional on proposal, or reduce project scale among proposed and approved projects.
+
+\subsection{Empirical Implementation}
+
+An empirical approval equation can be written as
+
+\[
+\Pr(A_j=1 \mid P_j=1)
+=
+\Lambda
+\left(
+\alpha \widehat{\pi}_j
+-
+\phi\,T_j\widehat{\pi}_j
+-
+Z_j'\delta
++
+\widehat{\pi}_j\cdot Z_j'\gamma
+-
+X_j'\beta
+\right),
+\]
+
+where $\widehat{\pi}_j$ is a measure of expected project profitability, $Z_j$ contains predictors of entitlement difficulty, and $X_j$ contains project controls. The term $\phi\,T_j\widehat{\pi}_j$ captures the timeline discount from the structural model ($\phi = \alpha r > 0$): longer reviews should reduce approval probability more sharply for high-profit projects. The interaction $\widehat{\pi}_j \cdot Z_j'\gamma$ tests prediction 3: a positive $\gamma$ would indicate that high-profit developers are better able to overcome high-barrier environments, consistent with the effort model.
+
+A simple measure of expected profitability is
+
+\[
+\widehat{\pi}_j
+=
+\text{Expected Revenue}_j
+-
+\text{Construction Cost}_j
+-
+\text{Land Cost}_j.
+\]
+
+The vector $Z_j$ may include variables such as
+
+\[
+Z_j =
+\{
+\text{homeowner share},
+\text{income},
+\text{historic overlay},
+\text{council district},
+\text{environmental sensitivity},
+\text{specific plan},
+\text{prior appeals nearby},
+\text{zoning complexity}
+\}.
+\]
+
+The vector $X_j$ may include ordinary project characteristics such as
+
+\[
+X_j =
+\{
+\text{units},
+\text{height},
+\text{density bonus use},
+\text{affordable share},
+\text{TOC eligibility},
+\text{ED1 status},
+\text{parcel size},
+\text{baseline zoning},
+\text{review timeline } T_j
+\}.
+\]
+
+The estimated entitlement barrier is then
+
+\[
+\widehat{O}_j
+=
+Z_j'\widehat{\delta}.
+\]
+
+Aggregating this measure across space produces a map of where the entitlement process is most costly:
+
+\[
+\widehat{O}_g
+=
+E[\widehat{O}_j \mid j \in g].
+\]
+
+\subsection{Interpretation}
+
+The model distinguishes observed opposition from true entitlement costs. A neighborhood with many appeals or lawsuits is not necessarily the most costly place to build, because high-profit projects may both attract opposition and induce developers to exert more effort. Similarly, a neighborhood with few formal denials may still have high entitlement costs if developers avoid proposing projects there in the first place.
+
+The relevant object is therefore not simply the number of appeals, lawsuits, or denials. Instead, the relevant object is approval difficulty conditional on project profitability:
+
+\[
+\text{Entitlement Cost}
+=
+\text{Approval Difficulty Conditional on Project Profitability}.
+\]
+
+In words, entitlement costs are highest in places where projects require unusually high effort, delay, redesign, legal expenditure, or political negotiation to achieve approval, after accounting for the private value of the project.
+
+
+
+
+
+\subsection{What Reforms do we Have?}
+\begin{enumerate}
+   \item 
+\end{enumerate}
+
+
+\section{Profits}
+A developer on parcel $j$ is considering pursuing an entitlement. They have the choice to propose a project and how larger to propose the project. They know that the larger the project, the longer the review time and the harder it will be to get approval. Ignoring approval costs, there is a simple function of profits that depends on project size:
+$$\pi_j(x)= R_j(x)-C(x)$$
+This is a function that is increasing up to a point $x^*_j$ where profits begin to fall as rents do not justify the increase in costs that come from building. We generally think of rents as being failure constant as a function of size but costs are not. There is a fixed cost of building and in addition, there are increasing costs as you build taller. So there are likely initially increasing returns to scale. So one possible functional form for the cost of building is:
+$$F+c_1x + c_2x^2$$
+
+\section{Approval}
+The developer cannot just apply for a project and build it. They must get the approval of both the city council member in charge of the district and the city planning department. For now, we can say that the city council member is the deciding factor, so their preferences are binding. There is social welfare function,
+$$W_j(x)$$ 
+This function may be increasing or decreasing. So why should a councilmember opposed to new housing allow anything to be built? Building new housing can be a way to increase the total market size of the area. New housing is generally going to be occupied by relatively well-off households since it is new. There could be places however that never have any new housing built that requires approval like that. 
+
+There is an approval function $A_j(x,e)$, that is location dependent and a function of the size of the project and how much effort the developer puts in to getting approval. 
+
+The developers problem is then:
+$$A_j(x,e)\pi_j(x)-e$$
+
+The FOC with respect to effort is:
+$$\frac{\partial A_j}{\partial e} \pi_j(x) = 1$$
+So the amount 
+
+\end{document}

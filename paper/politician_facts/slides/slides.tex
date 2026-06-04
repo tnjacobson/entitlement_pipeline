@@ -1,0 +1,283 @@
+\documentclass{beamer}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tikz} 
+\usepackage{chronology}
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+\usetikzlibrary{positioning, arrows.meta, calc}
+
+\usepackage{array}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{subcaption}
+\usepackage[font=small,labelfont=bf,
+   justification=justified,
+   format=plain]{caption}
+
+\usetikzlibrary{positioning}
+
+\usepackage{lipsum} 
+\setbeamersize{text margin left=5mm,text margin right=5mm} 
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\setbeamertemplate{footline}[frame number]
+\graphicspath{{../../../../../../Dropbox/Lawsuits Asymmetry/output}}
+% \usepackage{beamerthemesplit} // Activate for custom appearance
+
+\title{Costs of Time}
+\author{Tyler Jacobson}
+\date{\today}
+\AtBeginSection[]{
+  \begin{frame}[noframenumbering]
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+    \frametitle{Council District 1}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd1_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 2}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd2_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 3}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd3_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 4}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd4_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 5}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd5_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 6}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd6_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 7}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd7_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 8}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd8_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 9}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd9_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 10}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd10_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 11}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd11_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 12}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd12_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 13}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd13_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 14}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd14_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 15}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd15_count_approval_levels.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 1 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd1_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 2 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd2_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 3 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd3_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 4 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd4_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 5 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd5_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 6 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd6_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 7 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd7_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 8 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd8_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 9 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd9_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 10 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd10_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 11 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd11_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 12 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd12_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 13 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd13_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 14 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd14_count_filed.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Council District 15 — Filed}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.9\textwidth]{politicians/cd15_count_filed.pdf}
+  \end{figure}
+\end{frame}
+\end{document}

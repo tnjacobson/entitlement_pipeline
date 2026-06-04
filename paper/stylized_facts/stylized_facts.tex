@@ -1,0 +1,206 @@
+
+\documentclass[12pt]{article}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{inputenc, amsmath,amssymb, amsthm}
+\usepackage[font=small,labelfont=bf,
+   justification=justified,
+   format=plain]{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\newtheorem{theorem}{Theorem}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[colorlinks=true,
+            linkcolor=blue,      % color of internal links (sections, pages, etc)
+            citecolor=blue,      % color of citation links
+            urlcolor=blue,       % color of URL links
+            filecolor=blue]{hyperref}
+\usepackage{url}
+\usepackage{array}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit}
+\usetikzlibrary{calc}
+\usepackage{titling}
+\usepackage{lipsum}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage[margin=.75in]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb, amsfonts}  % loads all AMS symbols & environments
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\usepackage[english]{babel}
+
+\onehalfspacing
+
+
+\graphicspath{{../../../../../Dropbox/Lawsuits Asymmetry/output}}
+
+
+\title{Entitlement Pipeline: Stylized Facts}
+\author{Tyler Jacobson}
+\begin{document}
+\maketitle
+\section{Aspirational Introduction}
+
+
+
+
+
+
+What is the point of this paper? Well we know that many projects in the United States go through a long approval process before they can be built. What is our udnerstanding of the costs of such a process. The costs of a long process can nromally be thought of as discounting. The long process delays the returns to any upfront investment and leads to higher hurdles for building. 
+
+A key factor is how much of investment is upfront. In a world, where the entire investment is upfront, then any delays is incredibly costly. This is certainly not the case in the real estate world because the main expense in a project is the construction costs (materials and labor). 
+
+There are two components to the long approval process. First, there are the procedural costs associated with going through the approval process. These are the costs of preparing the various documents, any costs associated with attending hearings, any cost of having a long period of time before when you make the plans of the project and when you can get approval. Second, there is the approval costs associated with actually getting the housing you need. 
+
+Ellas paper shows that when a pro-housing alderman gets elected it leads to more housing being proposed and built in the area. So there are ways to shift the housing costs associated with permitting. 
+
+In my paper what I am doing is building a database of all projects in the entitlements process. I am coding the profitability of projects, how those profits shift over time, and then the likelihood that those projects actually get built. The goal is to actually open the black box of how an entitlements process is costly. 
+
+When do we think there is a lot of missing housing due to the approval process. What is the research question? Well it's 
+
+What are the precise questions? 
+\begin{enumerate}
+    \item Do long timelines not just lead to discounting but rather also increase risk? 
+    \item What do developers ask for when they ask for entitlements? That tells us what is actually valuable to them. 
+    \item What do politicians ask for from developers? 
+    \item What do constituents ask for? 
+    \item If this is all predictable, then we can 
+\end{enumerate}
+
+\begin{enumerate}
+    \item What are the concerns with the design? all I can tell you is that larger projects are more likely to die, longer projects are more likely to die. I can run the horse race between these two but ultimately there are just descriptive correlations. 
+    \item What do you do with this correlation? 
+\end{enumerate}
+
+
+\section{Summary of Stylized Facts}
+We establish a few facts in this paper.
+First, we show that a large fraction of housing in Los Angeles goes through what is known as the entitlements process. We show that this process is time consuming. We clarify that this is not a homogeneous process, how intense the process is depends on what the developers ask for and where in the city they ask for it. 
+Second, we show that what developers ask for is extremely local to the conditions within a particular neighborhood.
+Third, we show that the full pipeline matters. Not all housing that gets approved via the entitlements pipeline will actually be built. We quantify the amount of housing units that drop out and the amount of housing units that are approved but not built. 
+Second, we show that this process varies in costs across the city. In neighborhoods where there are a large fraction of homeowners, we have that the entitlements process is especially time consuming with more appeals, lower rates of approval, and more dropout. 
+Then, we show that the entitlement pipeline matters. A large fraction of entitlements are 
+
+\section{Aspirational Headline Results}
+\begin{enumerate}
+   \item I build a pipeline of the entitlements process and document that only 80\% of all approved residential entitlements in Los Angeles are actually built. Using data on rents and prices, I show that rent growth during the entitlements process does not explain which projects are built. What does explain what gets built are increasing costs during the building pipeline. I use self-reported cost estimates to build a cost index for different kinds of construction. I find that cost increases and interest rate increases are extremely predictive of the 
+   \item 
+\end{enumerate}
+
+
+\section{Entitlements Are Not All The Same}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/bar_determination_outcomes.pdf}
+   \caption{Outcomes of Entitlements}
+  \end{figure}
+
+\subsection{Differences in Success Rates, Lengths, and Conditions Across Case Types}
+Getting an entitlement as a developer does not imply the same decisionmaker, the same process, or the same outcomes. Some are a lot more complex than others.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/scatter_cases_withdraw_length.pdf}
+   \caption{Fraction of Applications with Single Case}
+  \end{figure}
+
+\newpage 
+\input{../../../../../Dropbox/Lawsuits Asymmetry/output/sum_stats/entitlement_top10_common}
+
+\input{../../../../../Dropbox/Lawsuits Asymmetry/output/sum_stats/entitlement_top10_longest}
+\newpage
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/avg_size_med_hh_incomee_2014.pdf}
+   \caption{Proposal Size by Renter Share}
+  \end{figure}
+
+\subsection{Complicated Entitlements are Falling Over Time}
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/complicated_entitlements_ts.pdf}
+   \caption{``Complicated'' Entitlements}
+  \end{figure}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/units_complicated_entitlements_ts.pdf}
+   \caption{``Complicated'' vs ``Uncomplicated'' Units Proposed}
+  \end{figure}
+
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/units_complicated_10_under10.pdf}
+   \caption{Measure JJJ Effects}
+  \end{figure}
+
+  \begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/measure_jjj_shock.pdf}
+   \caption{Measure JJJ Effects}
+  \end{figure}
+
+
+\section{How Do Proposals Change Over Approval Process?}
+In the data at least, the number of units at proposal tends to be the same as the number of units approved. 
+
+\begin{table}[H]
+    \centering
+    \input{../../../../../Dropbox/Lawsuits Asymmetry/output/sum_stats/approved_proposed_table.tex}
+\caption{Proposed vs Approved Projects}
+\end{table}
+
+
+
+\section{Differences in Entitlements by Neighborhood}
+\subsection{High Renter/Low-Income Places Have Bigger Proposals}
+There is a clear relationship shown in the following figure where there are larger proposals in areas that have higher renter shares. This is almost certainly due to the zoning code being much less stringent in high renter share places. The zoning code allows more multifamily higher density housing in these areas. Technically, it's possible for anyone to apply for anything anywhere but certainly the zoning code is a key constraint. 
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/avg_size_renter_share.pdf}
+   \caption{Proposal Size by Renter Share}
+  \end{figure}
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/avg_size_med_hh_incomee_2014.pdf}
+   \caption{Proposal Size by Renter Share}
+  \end{figure}
+
+In lower income/higher renter neighborhoods, the proposed entitlement is much more likely to include affordable housing. These neighborhoods seem to have a strong preference for that. 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{sum_stats/share_prop_aff_med_hh_income_2014.pdf}
+   \caption{Affordable Share by Neighborhood Income}
+  \end{figure}
+
+
+\subsection{Self Reported Costs}
+
+
+
+\subsection{Do High Homeownership Areas Have High Failure Rates?}
+Using administrative parcels data, we can identify exactly which parcels are owner-occupied. This allows us to measure how much entitlement difficulties depends on extremely granular parcel characteristics. 
+
+The local homeownership rate is predictive of development if only because there are considerable correlations between the zoning code and the amount of development. 
+
+
+Even within a case type, there are differences in process difficulty and success rates of entitlement cases based on the neighborhood demographics. We can observe when a case is terminated, withdrawn, or denied. This could occur for a variety of reasons. The developer could learn that they are not capable of actually getting the case approved so they stop caring. They could be told that they will never be approved so they withdraw the project. Whatever conditions that the process will impose could lead to there not being a profitable way to build the project so they give up.  
+
+To see that, I show the following binscatter plots. 
+The regression to run:
+$$Y_{i} = \theta_{case} + \beta_0 units_i + \beta_1 X_i + \epsilon_i $$
+where $Y_{i}$ is a measure of difficulty (length, appeals, withdrawal), $\theta_{case}$ are case fixed effects, $units_i$ is the size of the project proposed in units. $X_i$ is the demographic of the neighborhood of interest. 
+
+\end{document}
