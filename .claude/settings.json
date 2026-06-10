@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(latexmk -pdf -quiet env_congestion.tex)",
+      "Bash(stata-se -b do tasks/congestion_explore/env_congestion_mnd_nd.do)",
+      "Bash(echo \"Stata running in background \\(PID $!\\)\")",
+      "Bash(wait 666)"
+    ],
+    "additionalDirectories": [
+      "/Users/tylerjacobson/Documents/GitHub/lawsuits/tasks/congestion_explore"
+    ]
+  }
+}

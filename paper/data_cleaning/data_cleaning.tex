@@ -107,7 +107,42 @@ Okay so at this point our data is wide where each row is a case and we observe t
 \subsection{Classifying the Type of Entitlement}
 Different entitlements have different levels of heavy lift. 
 
-\section{A Clean Building Permits Database}
+\section{Understanding the Data}
+\begin{itemize}
+    \item Planning projects are distributed across the three geo teams with an expedited review section that handles eligible projects
+    \item Different suffixes will map to different decisionmakers so the final decisionmaker may be different 
+    \item Steps of review: entitlement package review, design review, environmental analysis, applicant submitted findings, recommendation to approve or deny, potential conditions
+    \item Design review may only be applicable to certain kinds of projects 
+    \item Planner determines whether an exemption is applicable
+    \item Initial study determines negative vs mnd vs EIR
+    \item Social or economic change cannot be determined to be 
+    \item Appendix G has thresholds for CEQA 
+    \item Planners seem to do the CEQA reviews
+\end{itemize}
+
+
+\section{Entitlement Timelines}
+One case is CPC-2015-4184-GPA-ZC-BL-SPR. It's described as, ``70 CONDOMINIUM UNITS WITHIN NINE SEPARATE BUILDINGS, 4 STORIES HAVING 3 LEVELS OF DWELLINGS OVER ONE AT GRADE PARKING GARAGE.'' The project is asking for a zoning change and a GPA and a SPR.
+
+It was submitted on 11/16/2015 and was accepted one month later. It went to a hearing on 8/30/2016. CPC took action on 12/21/2016. The data says it was assigned on 9/1/2017, which is after the final approval. 
+
+The other case associated with this application is a VTT-73939-CN. This was filed on the same date, accepted on 5/20/2016, assigned on 11/13/2015 and approved on 9/21/2016. This is a vesting tentative tract application (because this project is a subdivision), which locks in zoning rules. 
+
+ENV-2015-4183-MND is the environmental case, which was filed on 11/16/2015 and approved on 8/10/2016. It got assigned on 5/23/16 to William Hughen. 
+
+In one of the PDF's, it's clear that the project was extended. Laura Steele (planner) was listed on the form that was dated on November 19 2018.
+
+Another form says they were granted an extension until 2026 because of a delay in financing the project. ``please be advised that it has been shown that a delay has been or will be unavoidable due to a delay in financing the project May 2, 2017 ''
+
+So here it's clear that Laura Steele only got involved for the extention and for some reason needed to do CEQA again. So the date she was assigned and when she was assigned was not reliable. 
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.6\textwidth]{entitlements_sum_stats/hist_gap_assigned.pdf}
+   \caption{Gap Between Assignment and Filing}
+  \end{figure}
+
+Let's look at a handful of other projects that have these kinds of gaps.
 
 
 \section{Linking Entitlements to Building Permits}

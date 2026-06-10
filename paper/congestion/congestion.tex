@@ -57,6 +57,42 @@ So we have the reduce form relationship that the amount of time waiting on appro
 To make progress on this front, we need an instrument that moves the amount of time that the project spends in review that is uncorrelated with other aspects that affect whether that project fails or not. 
 
 \section{Potential Instruments}
+We have evidence presented int he following sections that congestion, when the city planning department faces more applications, they approve projects more slowly. This is simply a fact of government procedures as they cannot keep up with demand for approvals. This is a result in itself, though perhaps more consulting project than research. Congestion indeed leads to higher review times. 
+
+What's missing from this evidence is that we want to know how costly this congestion is. What is the effect on project completion? Do delays in planning reduce the likelihood of building? To answer this question, we need a shifter to the length of the planning process. We need an instrumental variable that extends review timelines and satisfies the exclusion restriction. 
+
+\subsection{Community Planning Areas Congestion}
+ Community Planning Areas: we know from the discussion with Grace that cases are often assigned based on the community planning area. They certainly are assigned based on the processing unit. One idea is to compare two cases. One is submitted in a congested processing unit and one is assigned to a less congested processing unit. Under the assumption that these cases are identical and that the congestion affects completion via time, we can get an estimate of how delays affect project completion. 
+
+One way of defining the instrument is to look at the number of proposals in the community district area over a lookback period. Lots of proposals may lead to delays in reviewing the project at hand. 
+$$Z_{ct} = \sum_{s=t-l}^t Proposals_{cs}$$
+
+If we observed the full length of cases perfectly $D_{j}$, we could run the following regression as the first stage:
+$$\ln D_j = X_j'\beta + \delta Z_{ct{j}} + \epsilon_j$$
+$\delta$ is the effect of having more projects submitted just before you on your case length. 
+
+The intuition behind the instrument. Imagine there are 100 projects submitted in a district over a month. The exact date that you get your application in is essentially random but whether you submit first or last affects when your project gets reviewed. If I am a reviewer, I have a stack of projects on my desk and review them one at a time. Getting behind the queue leads me to be behind. 
+
+The logic behind this is akin to an event study using community districts as treatment definitions. A problem is certainly that there are spillovers across districts, there are also not all that many districts. 
+
+
+\subsection{Reviewer Effects}
+A reviewer is prone to review more slowly or quickly. Call this their speed $\theta_r$. We cannot measure this directly so we use a leave one out measure:
+$\hat{\theta}_r}$, which is the average time for other cases. A major problem with this is that there are spillover effects. There may be unobservables since reviewers are not chosen randomly. Conditional on queue stack and type of project, assignment could be random. This requires knowing what the assignment bucket is. 
+
+What if I get assigned a case and then another case gets assigned to me the following day. Do I really expect a large effect on the case assigned tomorrow. For one, it probably was assigned to me because it's not actually all that difficult. Even if it were, do I necessarily focus so much more quickly on the first case. 
+
+
+\subsection{Selection on Observables}
+Matching of similar projects but one in an era with a lot of congestion and one when there isn't much congestion. Control for differences in the building conditions. This is just one step above what I am doing now. 
+
+\subsection{CEQA}
+Maybe the CEQA planner is the bottle neck, I can take advantage of the CEQA case load instead of the planner. Let's do that tomorrow. I don't understand the difference between the filing date and the assigned date. This is crucial to understanding both designs and may require talking to the City. 
+
+\subsection{Reviewer Retirements}
+What if my reviewer retires and things shift?
+
+
 Project $j$ is assigned to reviewer $r$. This assignment occurs based on the geography, type of project, and capacity. For that reason, this assignment is not random and a reviewer fixed effects design is not plausible. The potential instrument is the number of assignments to the reviewer after the proposal and the quality of the reviews. The idea is that lower quality projects are more time consuming for the reviewer to deal with. 
 
 Let $Z_{rt}$ be the number of projects that are assigned to revewer $r$ in the month of time $t$. 

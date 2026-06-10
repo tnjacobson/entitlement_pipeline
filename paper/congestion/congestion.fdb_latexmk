@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1780521470 "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/congestion/congestion.tex" "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/congestion/congestion.pdf" "congestion" 1780521471
+["pdflatex"] 1780613886 "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/congestion/congestion.tex" "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/congestion/congestion.pdf" "congestion" 1780613888
   "../../../../../Dropbox/Lawsuits Asymmetry/output/congestion/binscatter_case_length_lead3_lead3_yhat_m4_fes.pdf" 1779465639 33334 1512a5cf368946a1dd6b50135aefead2 ""
   "../../../../../Dropbox/Lawsuits Asymmetry/output/congestion/binscatter_case_length_lead3_mean_case_length_fes.pdf" 1779465637 30917 c23d882c94a769723d42b934a76c4fb1 ""
   "../../../../../Dropbox/Lawsuits Asymmetry/output/congestion/binscatter_case_length_lead3_non_admin_rel_control_ym.pdf" 1779465636 33654 e81eacef767444ebebb2c9e6964b7051 ""
@@ -19,8 +19,8 @@
   "../../../../../Dropbox/Lawsuits Asymmetry/output/congestion/ts_hazard_unit.pdf" 1780350673 29519 93e9b2a845804d877152682496a785ed ""
   "../../../../../Dropbox/Lawsuits Asymmetry/output/congestion/ts_queue_process_unit_complicated.pdf" 1780349898 29520 31ef1a3b2a86cc40a2f7d4ee58e82932 ""
   "../../../../../Dropbox/Lawsuits Asymmetry/output/congestion/ts_queue_process_unit_pred_long.pdf" 1780349898 29435 796ab928ef17e77e73fad8af040b60f8 ""
-  "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/congestion/congestion.aux" 1780521471 4915 83a6223619ff074e2d7d3c574612d967 ""
-  "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/congestion/congestion.tex" 1780521469 20102 6bd086c70c2eb523fd11ce3ac6a1106a ""
+  "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/congestion/congestion.aux" 1780612352 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/congestion/congestion.tex" 1780613886 24031 64b2fd131669758e223a0ec743039a35 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -225,13 +225,13 @@
   "/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1616695603 5169178 a2ce6e2d73f603b690db6777d06dbccb ""
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1646273981 2724745 625ad4310f342bb0455800ee484baebc ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
-  "congestion.aux" 1780521471 4915 83a6223619ff074e2d7d3c574612d967 "pdflatex"
-  "congestion.out" 1780521471 2928 b3c621bb70b0847f4e717932092139eb "pdflatex"
-  "congestion.tex" 1780521469 20102 6bd086c70c2eb523fd11ce3ac6a1106a ""
+  "congestion.aux" 1780612352 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "congestion.out" 1780612352 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "congestion.tex" 1780613886 24031 64b2fd131669758e223a0ec743039a35 ""
   (generated)
-  "congestion.out"
-  "congestion.log"
-  "congestion.pdf"
   "congestion.aux"
   "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/congestion/congestion.pdf"
   "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/congestion/congestion.log"
+  "congestion.out"
+  "congestion.log"
+  "congestion.pdf"

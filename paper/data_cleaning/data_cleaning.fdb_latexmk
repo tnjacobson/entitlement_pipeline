@@ -1,8 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1778358600 "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/data_cleaning/data_cleaning.tex" "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/data_cleaning/data_cleaning.pdf" "data_cleaning" 1778359891
+["pdflatex"] 1780685765 "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/data_cleaning/data_cleaning.tex" "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/data_cleaning/data_cleaning.pdf" "data_cleaning" 1780685768
+  "../../../../../Dropbox/Lawsuits Asymmetry/output/entitlements_sum_stats/hist_gap_assigned.pdf" 1780685765 27836 cd1308771a28f13a0300840c0ada1776 ""
   "../../../../../Dropbox/Lawsuits Asymmetry/output/entitlements_sum_stats/single_case_application_ts.pdf" 1778358546 26722 c92a7b42c3f803e55164cf8ad863ec7d ""
-  "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/data_cleaning/data_cleaning.aux" 1778358601 1989 3512a0e277b0e95bbea23b2cd442a42e ""
-  "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/data_cleaning/data_cleaning.tex" 1778358599 4752 082f4f1862184e8f69c5380f283fba13 ""
+  "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/data_cleaning/data_cleaning.aux" 1780685766 2266 79b9ed750407151b599cbd85d74eb025 ""
+  "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/data_cleaning/data_cleaning.tex" 1780685563 6872 646a501a66dd462177c9916005e4941c ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -189,13 +190,13 @@
   "/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1616695603 5169178 a2ce6e2d73f603b690db6777d06dbccb ""
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1646273981 2724745 625ad4310f342bb0455800ee484baebc ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
-  "data_cleaning.aux" 1778358601 1989 3512a0e277b0e95bbea23b2cd442a42e "pdflatex"
-  "data_cleaning.out" 1778358601 1484 c2700e1faad46895c31da221284101c3 "pdflatex"
-  "data_cleaning.tex" 1778358599 4752 082f4f1862184e8f69c5380f283fba13 ""
+  "data_cleaning.aux" 1780685766 2266 79b9ed750407151b599cbd85d74eb025 "pdflatex"
+  "data_cleaning.out" 1780685766 1596 183bdda779a0944ca0079bbad796c10c "pdflatex"
+  "data_cleaning.tex" 1780685563 6872 646a501a66dd462177c9916005e4941c ""
   (generated)
+  "data_cleaning.log"
   "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/data_cleaning/data_cleaning.log"
   "data_cleaning.pdf"
-  "data_cleaning.aux"
-  "data_cleaning.log"
   "data_cleaning.out"
   "/Users/tylerjacobson/Documents/GitHub/entitlement_pipeline/paper/data_cleaning/data_cleaning.pdf"
+  "data_cleaning.aux"
